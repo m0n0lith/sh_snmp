@@ -1,5 +1,6 @@
 #!/bin/bash
-# Vaiabler för att få ut all information om nätverket
+#
+# Vaiabler för att få ut all information om nätverket.
 adapt=$(ip route | awk '/default/ { print $5 }')
 dator=$(ip addr list dev $adapt | grep 'inet ' | awk '{ print $2 }' | cut -d '.' -f 1,2,3)
 net=$(ip addr list dev $adapt | grep 'inet ' | awk '{ print $2 }' | cut -d '.' -f 4 | cut -d '/' -f 2)
@@ -11,10 +12,9 @@ cnet=24
 samlingH=samling_hosts.txt
 samlingA=samling_allt.txt
 
-
 # Tillverkning av menyn, för att slippa skriva ut den om jag skulle
 # behöva den på mer än ett ställe.
-showMenu () { 
+showMenu () {
      echo "########################################"
      echo " Säg vad vill du titta efter? : "
      echo "########################################"
@@ -24,7 +24,7 @@ showMenu () {
      echo " [4] - Sammanfattning av maskin"
      echo " [5] - Disk information på maskin"
      echo " [6] - Processer igång på maskin"
-     echo 
+     echo
      echo " [q] - Avsluta!"
      echo "########################################"
      echo -n "Gör ditt val! : "
